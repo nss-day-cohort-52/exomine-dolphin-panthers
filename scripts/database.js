@@ -42,7 +42,16 @@ export const setFacility = (facilityId) => {
 }
 
 export const getFacilities = () => {
-    return database.facilities.map(f => ({...f}))
+    return database.facilities.map(facility => ({...facility}))
+}
+export const getColonies = () => {
+    return database.colonies.map(colony => ({...colony}))
+}
+export const getGovernors = () => {
+    return database.governors.map(governor => ({...governor}))
+}
+export const getMinerals = () => {
+    return database.minerals.map(mineral => ({...mineral}))
 }
 
 export const purchaseMineral = () => {
