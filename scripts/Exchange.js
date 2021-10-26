@@ -1,4 +1,4 @@
-import { Facilities } from "./Facilities.js"
+import { FacilitiesSelect } from "./Facilities.js"
 
 export const Exchange = () => {
     return `
@@ -13,7 +13,7 @@ export const Exchange = () => {
                     <div> actual minerals</div>
                 </Section>
         </Article>
-        <Article>"Facility Choice:" ${Facilities()} </Article>
+        <Article>"Facility Choice:" ${FacilitiesSelect()} </Article>
         <Article class="placeholder1">
             <Section>
                 <Section>"Minerals At Facility"</Section>
