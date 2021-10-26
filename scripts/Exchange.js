@@ -1,4 +1,5 @@
 import { FacilitiesSelect } from "./Facilities.js"
+import { Governors } from "./Governors.js"
 
 export const Exchange = () => {
     return `
@@ -7,7 +8,10 @@ export const Exchange = () => {
             <h1 class="title">Mineral Exchange</h1>
         </header>
         <Article class="placeholder1">
-                <Section>Choose Governor: Governor Select</Section>
+                <Section>
+                    Choose a governor:
+                    ${Governors()}
+                </Section>
                 <Section>
                     <h2>"ColonyName" Minerals </h2>
                     <div> actual minerals</div>
