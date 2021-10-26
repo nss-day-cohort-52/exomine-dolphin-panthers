@@ -1,4 +1,4 @@
-import { getFacilities } from "./database.js"
+import { getFacilities, setFacility } from "./database.js"
 
 export const FacilitiesSelect = () => {
     const facilities = getFacilities()
@@ -11,3 +11,12 @@ export const FacilitiesSelect = () => {
     html += "</select>" //closes the select
     return html //returns the fully constructed select field 
 }
+
+document.addEventListener("change", (event) => {
+    if(event.target.id === "facility"){
+        setFacility(parseInt(event.target.value)) //references a pre-established setter to set a transient state property.
+        debugger //for testing
+    }
+})
+
+
