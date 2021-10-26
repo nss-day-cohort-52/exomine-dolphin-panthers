@@ -9,11 +9,23 @@ const database = {
         
     ],
     facilities = [
-        { id: 1, minerals: [{name: "Jacobsite", amount: 72},{name: "Indite", amount: 33},{name: "Iron", amount: 86}], active: true},
-        { id: 2, minerals: [{name: "Kainite", amount: 22},{name: "Krotite", amount: 35}, {name: "Copper", amount: 77}], active: true},
-        { id: 3, minerals: [{name: "Hafnon", amount: 44},{name: "Haxonite", amount: 4},{name: "Iron", amount: 55}], active: true},
-        { id: 4, minerals: [{name: "Fluellite", amount: 27},{name: "Galaxite", amount: 99}, {name: "Copper", amount: 77}], active: true}
+        { id: 1, minerals: [{mineralId: 1, amount: 72},{mineralId: 2, amount: 33},{mineralId: 3, amount: 86}], active: true},
+        { id: 2, minerals: [{mineralId: 4, amount: 22},{mineralId:  5, amount: 35}, {mineralId:  6, amount: 77}], active: true},
+        { id: 3, minerals: [{mineralId: 7, amount: 44},{mineralId: 8, amount: 4},{mineralId: 3, amount: 55}], active: true},
+        { id: 4, minerals: [{mineralId: 9, amount: 27},{mineralId: 10, amount: 99}, {mineralId: 6, amount: 77}], active: true}
 
+    ],
+    minerals = [
+        {id: 1, mineralName: "Jacobsite"},
+        {id: 2, mineralName: "Indite"},
+        {id: 3, mineralName: "Iron"},
+        {id: 4, mineralName: "Kainite"},
+        {id: 5, mineralName: "Krotite"},
+        {id: 6, mineralName: "Copper"},
+        {id: 7, mineralName: "Hafnon"},
+        {id: 8, mineralName: "Haxonite"},
+        {id: 9, mineralName: "Fluellite"},
+        {id: 10, mineralName: "Galaxite"},
     ],
     colonies = [
         {id:1, planetName: "Europa", minerals: []},
