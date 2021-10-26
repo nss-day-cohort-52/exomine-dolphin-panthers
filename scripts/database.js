@@ -10,10 +10,10 @@ const database = {
     ],
     facilities: [
 
-        { id: 1, name: "Galactic Rocks", minerals: [{mineralId: 1, amount: 72},{mineralId: 2, amount: 33},{mineralId: 3, amount: 86}], active: true},
-        { id: 2, name: "Asteroids Anonymous", minerals: [{mineralId: 4, amount: 22},{mineralId:  5, amount: 35}, {mineralId:  6, amount: 77}], active: true},
-        { id: 3, name: "Ring Foundries", minerals: [{mineralId: 7, amount: 44},{mineralId: 8, amount: 4},{mineralId: 3, amount: 55}], active: true},
-        { id: 4, name: "Luna Foundry", minerals: [{mineralId: 9, amount: 27},{mineralId: 10, amount: 99}, {mineralId: 6, amount: 77}], active: false}
+        { id: 1, name: "Galactic Rocks", active: true},
+        { id: 2, name: "Asteroids Anonymous", active: true},
+        { id: 3, name: "Ring Foundries", active: true},
+        { id: 4, name: "Luna Foundry", active: true}
 
     ],
     minerals: [
@@ -26,13 +26,101 @@ const database = {
         {id: 7, mineralName: "Hafnon"},
         {id: 8, mineralName: "Haxonite"},
         {id: 9, mineralName: "Fluellite"},
-        {id: 10, mineralName: "Galaxite"},
+        {id: 10, mineralName: "Galaxite"}
     ],
     colonies: [
-        {id:1, planetName: "Europa", minerals: []},
-        {id:2, planetName: "Saturn", minerals: []},
-        {id:3, planetName: "Mars", minerals: []},
-        {id:4, planetName: "Luna", minerals: []}
+        {id:1, planetName: "Europa"},
+        {id:2, planetName: "Saturn"},
+        {id:3, planetName: "Mars"},
+        {id:4, planetName: "Luna"}
+    ],
+    colonyMinerals: [
+        {
+            id: 1, 
+            colonyId: 1,
+            mineralId: 10,
+            mineralQuantity:12
+        },
+        {   
+            id: 2, 
+            colonyId: 3,
+            mineralId: 4,
+            mineralQuantity: 8
+        },
+        {   
+            id: 3, 
+            colonyId: 4,
+            mineralId: 7,
+            mineralQuantity: 3 
+        },
+        {   
+            id: 4, 
+            colonyId: 3,
+            mineralId: 2,
+            mineralQuantity: 6
+        }
+    ],
+    facilityMinerals: [
+        {
+            id: 1,
+            facilityId: 1,
+            mineralId: 1,
+            mineralQuanitity: 16
+        },
+        {
+            id: 2,
+            facilityId: 1,
+            mineralId: 2,
+            mineralQuanitity: 27
+        },
+        {
+            id: 3,
+            facilityId: 2,
+            mineralId: 3,
+            mineralQuanitity: 18
+        },
+        {
+            id: 4,
+            facilityId: 3,
+            mineralId: 4,
+            mineralQuanitity: 6
+        },
+        {
+            id: 5,
+            facilityId: 3,
+            mineralId: 5,
+            mineralQuanitity: 10
+        },
+        {
+            id: 6,
+            facilityId: 4,
+            mineralId: 6,
+            mineralQuanitity: 6
+        },
+        {
+            id: 7,
+            facilityId: 1,
+            mineralId: 7,
+            mineralQuanitity: 43
+        },
+        {
+            id: 8,
+            facilityId: 1,
+            mineralId: 8,
+            mineralQuanitity: 27
+        },
+        {
+            id: 9,
+            facilityId: 2,
+            mineralId: 9,
+            mineralQuanitity: 63
+        },
+        {
+            id: 10,
+            facilityId: 3,
+            mineralId: 10,
+            mineralQuanitity: 7
+        }
     ],
     transientState: {}
 }
