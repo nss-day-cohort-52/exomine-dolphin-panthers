@@ -16,7 +16,7 @@ export const Exchange = () => {
         <Article>"Facility Choice:" ${FacilitiesSelect()} </Article>
         <Article class="placeholder1">
             <Section>
-                <Section>"Minerals At Facility"</Section>
+                <Section>"Facility Minerals"</Section>
                 <Section>Resource List for Colony</Section>
             </Section>
             <Section>
