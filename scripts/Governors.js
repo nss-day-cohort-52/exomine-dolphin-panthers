@@ -22,8 +22,8 @@ export const Governors = () => {
     <option value="0">---Select a governor---</option>`
     for (const governor of governors) {
         let govCheck = false 
-        if(transientstate.governorID === governor.id) govCheck = true
-        html += `<option value="${governor.id}" select="${govCheck}">${governor.name}</option>`
+        if(transientstate.governorID === governor.id) govCheck = true //checks to see if current governor is the current transient state, if so, change to true
+        html += `<option value="${governor.id}" select="${govCheck}">${governor.name}</option>`//if select is true, this will display after render
     }
     html += `<select>`
     return html

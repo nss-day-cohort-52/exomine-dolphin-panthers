@@ -7,7 +7,7 @@ export const FacilitiesSelect = () => {
     facilities.map(
         (facility) => {
             let facCheck = false
-            if (transientstate.facilityId === facility.id) facCheck = true
+            if (transientstate.facilityId === facility.id) facCheck = true //see parallel code in governors.js
             html += `<option value="${facility.id}" select="${facCheck}">${facility.name}</option>` //loops through facilities and adds each option
         }
     )
