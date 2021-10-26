@@ -1,3 +1,15 @@
+import {setGovernor} from "./database.js"
+//Event listener for governor select
+document.addEventListener(
+    "change",
+    (changeEvent) => {
+        if(changeEvent.target.id === "select__governor"){
+            setGovernor(parseInt(changeEvent.target.value))
+        }
+    }
+
+)
+
 import { getGovernors } from "./database.js";
 
 
@@ -13,3 +25,4 @@ export const Governors = () => {
     html += `<select>`
     return html
 }
+
