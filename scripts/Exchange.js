@@ -1,4 +1,4 @@
-import { FacilitiesSelect } from "./Facilities.js"
+import { FacilitiesSelect, FacilityName } from "./Facilities.js"
 import { Governors } from "./Governors.js"
 
 export const Exchange = () => {
@@ -20,7 +20,7 @@ export const Exchange = () => {
         <Article>"Facility Choice:" ${FacilitiesSelect()} </Article>
         <Article class="placeholder1">
             <Section>
-                <Section>"Facility Minerals"</Section>
+                <Section>"Facility Minerals ${FacilityName()}"</Section>
                 <Section>Resource List for Colony</Section>
             </Section>
             <Section>

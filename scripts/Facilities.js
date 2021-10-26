@@ -1,18 +1,34 @@
 import { getFacilities, getTransientState, setFacility } from "./database.js"
 
+
 export const FacilitiesSelect = () => {
     const transientstate = getTransientState()
     const facilities = getFacilities()
     let html = `<select id="facility"> <option value="0">---Select a facility---</option>`//intiates select field and adds default option
-    facilities.map(
+    facilities.map( //loops through facilities and adds each option to the html
         (facility) => {
-            let facCheck = false
-            if (transientstate.facilityId === facility.id) facCheck = true //see parallel code in governors.js
-            html += `<option value="${facility.id}" select="${facCheck}">${facility.name}</option>` //loops through facilities and adds each option
+            html += `<option value="${facility.id}"`
+            if (transientstate.selectedFacility === facility.id) html += " selected" //rather than playing with =true or false, I just added the selected attribute only if the case is true
+            html += `>${facility.name}</option>` 
         }
     )
     html += "</select>" //closes the select
     return html //returns the fully constructed select field 
+}
+
+export const FacilityName = () => {
+    const transientstate = getTransientState()
+    const facilities = getFacilities()
+    let html = ""
+    facilities.map(
+        (facility) => {
+            if (transientstate.selectedFacility === facility.id){
+                html += "for " + facility.name
+            }
+            
+        }
+    )
+    return html
 }
 
 document.addEventListener("change", (event) => {
@@ -21,5 +37,6 @@ document.addEventListener("change", (event) => {
         debugger //for testing
     }
 })
+
 
 
