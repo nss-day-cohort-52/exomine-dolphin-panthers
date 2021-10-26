@@ -22,7 +22,8 @@ export const Exchange = () => {
             <Section>
                 <Section>Cart</Section>
                 <Section>Cart Items</Section>
-                <Section>Purchase Button</Section>
+                <Section>
+                <button id= "orderMineral">Purchase Minerals</button></Section>
             </Section>
         </Article>
     `
