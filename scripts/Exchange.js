@@ -1,3 +1,5 @@
+import { FacilitiesSelect } from "./Facilities.js"
+
 export const Exchange = () => {
     return `
         <header class="header">
@@ -11,7 +13,7 @@ export const Exchange = () => {
                     <div> actual minerals</div>
                 </Section>
         </Article>
-        <Article>"Facility Choice:" Aligned Left</Article>
+        <Article>"Facility Choice:" ${FacilitiesSelect()} </Article>
         <Article class="placeholder1">
             <Section>
                 <Section>"Minerals At Facility"</Section>
