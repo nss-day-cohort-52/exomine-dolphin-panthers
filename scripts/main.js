@@ -1,3 +1,4 @@
+import { colonyResources } from "./ColonyResources.js"
 import { Exchange } from "./Exchange.js"
 
 
@@ -8,11 +9,11 @@ const renderAllHTML = () => {
 }
 
 renderAllHTML()
-
+colonyResources()
 
 document.addEventListener("stateChanged", event => {
     console.log("State of data has changed. Regenerating HTML...")
     renderAllHTML()
-
+    colonyResources()
 })
 

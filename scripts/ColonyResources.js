@@ -36,41 +36,48 @@ export const colonyResources = () => {
         }
     )
     //find the colony that the governor is identified with
-    let currentColony = colonies.find(
-        (colony) => {
-            if (colony.id === currentGov.colonyId) {
-                return colony
-            } else {
-                return null
+    if (currentGov !== undefined) {
+        let currentColony = colonies.find(
+            (colony) => {
+                if (colony.id === currentGov.colonyId) {
+                    return colony
+                } else {
+                    return null
+                }
             }
-        }
-    )
+        )
 
-    //use the colony to find the mineral name to display
-    let colonyMineral = colonyMinerals.find(
-        (mineral) => {
-            if (mineral.colonyId === currentColony.id) {
-                return mineral
-            } else {
-                return null
+
+        //use the colony to find the mineral name to display
+        let colonyMineral = colonyMinerals.filter(
+            (mineral) => {
+                if (mineral.colonyId === currentColony.id) {
+                    return mineral
+                } else {
+                    return null
+                }
+
             }
+        )
+        //info previously on this line removed as a redundancy for the new if statement added above
 
+        html = "" //reset the html state for the += coming up
+        colonyMineral.map((mineral) => { //for every mineral the colony has
+            minerals.map( //go through the mineral name array
+                (mineralNamer) => {
+                    if (mineralNamer.id === mineral.mineralId) { //and once you find the mineral name that matches,
+                        html += `<div>${mineral.mineralQuantity} tons of ${mineralNamer.mineralName}</div>` //use the current loop info to build an html line
+                    } else {
+                        return null
+                    }
+                }
+            )    
         }
-    )
-    if (colonyMineral === undefined) {
-        return renderMineralHTML()
+        )
+        if(html === "") html = "No Minerals" //if nothing happened in the maps, go ahead and change it back to no minerals
+        //    html = `${colonyMineral.mineralQuantity} tons of ${mineralDisplay.mineralName}`
+
     }
-    let mineralDisplay = minerals.find(
-        (mineral) => {
-            if (mineral.id === colonyMineral.mineralId) {
-                return mineral
-            } else {
-                return null
-            }
-        }
-    )
-    html = `${colonyMineral.mineralQuantity} tons of ${mineralDisplay.mineralName}`
-
-
     return renderMineralHTML()
+
 }
