@@ -4,7 +4,11 @@ import { getFacilities, getFacilityMinerals, getMinerals, getTransientState, set
 export const FacilitiesSelect = () => {
     const transientstate = getTransientState()
     const facilities = getFacilities()
-    let html = `<select id="facility"> <option value="0">---Select a facility---</option>`//intiates select field and adds default option
+    let html = `<select id="facility"`
+    if (transientstate.selectedGovernor === undefined) { //if no governor selected, disables the facility dropdown
+        html +=" disabled"
+    }
+    html += `> <option value="0">---Select a facility---</option>`//intiates select field and adds default option
     facilities.map( //loops through facilities and adds each option to the html
         (facility) => {
             html += `<option value="${facility.id}"`
