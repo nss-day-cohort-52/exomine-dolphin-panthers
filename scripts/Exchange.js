@@ -1,6 +1,5 @@
-
+import { FacilitiesSelect, FacilityMinerals, FacilityName } from "./Facilities.js"
 import { ColonyName } from "./ColonyName.js"
-import { FacilitiesSelect, FacilityName } from "./Facilities.js"
 import { Governors } from "./Governors.js"
 
 export const Exchange = () => {
@@ -16,7 +15,7 @@ export const Exchange = () => {
                 </Section>
                 <Section>
 
-                    <h2>"ColonyName" Minerals </h2>
+                    <h2>${ColonyName()} Minerals </h2>
                     <div id="mineralDisplay"></div>
 
                 </Section>
@@ -25,7 +24,7 @@ export const Exchange = () => {
         <Article class="placeholder1">
             <Section>
                 <Section>"Facility Minerals ${FacilityName()}"</Section>
-                <Section>Resource List for Colony</Section>
+                <Section>${FacilityMinerals()}</Section>
             </Section>
             <Section>
                 <Section>Cart</Section>
