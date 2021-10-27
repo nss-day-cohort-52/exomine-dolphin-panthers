@@ -1,3 +1,4 @@
+import { setMineral } from "./database.js"
 
 
 document.addEventListener(

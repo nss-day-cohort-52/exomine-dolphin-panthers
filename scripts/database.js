@@ -135,6 +135,11 @@ export const setGovernor = (governorId) => {
     document.dispatchEvent(new CustomEvent("stateChanged"))
 }
 
+export const setMineral = (mineralId) => {
+    database.transientState.selectedMineral = mineralId
+    document.dispatchEvent(new CustomEvent("stateChanged"))
+}
+
 export const getFacilities = () => {
     return database.facilities.map(facility => ({ ...facility }))
 }
