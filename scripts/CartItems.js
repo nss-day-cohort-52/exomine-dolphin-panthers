@@ -3,7 +3,7 @@
 document.addEventListener(
     "change",
     (changeEvent) => {
-        if (changeEvent.target.id === "select__mineral") {
+        if (changeEvent.target.name.startsWith("mineral")) {
             setMineral(parseInt(changeEvent.target.value))
         }
     }
