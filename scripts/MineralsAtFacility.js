@@ -1,4 +1,4 @@
-import { getColonyMinerals, getFacilities, getFacilityMinerals, getTransientState } from "./database.js"
+import { getColonyMinerals, getFacilities, getFacilityMinerals, getGovernors, getTransientState, getColonies } from "./database.js"
 
 
 // When clicking on "purchase mineral" button, 
@@ -15,4 +15,31 @@ export const subtractFromFacility = () => {
         }
     )
     foundMineral.mineralQuanitity = foundMineral.mineralQuanitity - 1
+}
+//find governor in charge of colony, add 1 to the appropriate mineral quantity
+export const addToColony = () => {
+    const colonyMinerals = getColonyMinerals()
+    const state = getTransientState()
+    const governors = getGovernors()
+    const colonies = getColonies()
+    //find governor mentioned in state
+    let foundGovernor = governors.find(
+        (governor) => {
+            return governor.id === state.selectedGovernor
+        }
+    )
+    //find colony governor is associated with
+    let foundColony = colonies.find(
+        (colony) => {
+            return colony.id === foundGovernor.colonyId
+        }
+    )
+    //find colony minerals associated with colony
+    let foundMineral = colonyMinerals.find(
+        (mineral) => {
+            return mineral.colonyId === foundColony.id
+        }
+    )
+    foundMineral.mineralQuantity = foundMineral.mineralQuantity + 1
+
 }

@@ -3,14 +3,15 @@
 // When clicking on "purchase mineral" button, 
 // a single quantity of the indicated mineral will be subtracted from the chosen facility 
 
-import { subtractFromFacility } from "./MineralsAtFacility.js"
+import { addToColony, subtractFromFacility } from "./MineralsAtFacility.js"
 
 document.addEventListener(
     "click",
     (event) => {
         if (event.target.id === "orderMineral") {
             subtractFromFacility()
-            debugger
+            addToColony()
+            document.dispatchEvent(new CustomEvent("stateChanged"))
         }
     }
 )
