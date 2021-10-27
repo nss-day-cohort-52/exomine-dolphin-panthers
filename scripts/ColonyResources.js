@@ -36,9 +36,8 @@ export const colonyResources = () => {
         }
     )
     //find the colony that the governor is identified with
-    let currentColony
     if (currentGov !== undefined) {
-        currentColony = colonies.find(
+        let currentColony = colonies.find(
             (colony) => {
                 if (colony.id === currentGov.colonyId) {
                     return colony
@@ -63,11 +62,11 @@ export const colonyResources = () => {
         //info previously on this line removed as a redundancy for the new if statement added above
 
         html = "" //reset the html state for the += coming up
-        colonyMineral.map((mineral) => {
-            minerals.map(
+        colonyMineral.map((mineral) => { //for every mineral the colony has
+            minerals.map( //go through the mineral name array
                 (mineralNamer) => {
-                    if (mineralNamer.id === mineral.mineralId) {
-                        html += `<div>${mineral.mineralQuantity} tons of ${mineralNamer.mineralName}</div>`
+                    if (mineralNamer.id === mineral.mineralId) { //and once you find the mineral name that matches,
+                        html += `<div>${mineral.mineralQuantity} tons of ${mineralNamer.mineralName}</div>` //use the current loop info to build an html line
                     } else {
                         return null
                     }
