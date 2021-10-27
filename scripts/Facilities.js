@@ -1,4 +1,4 @@
-import { getFacilities, getTransientState, setFacility } from "./database.js"
+import { getFacilities, getFacilityMinerals, getMinerals, getTransientState, setFacility } from "./database.js"
 
 
 export const FacilitiesSelect = () => {
@@ -29,6 +29,27 @@ export const FacilityName = () => {
         }
     )
     return html
+}
+
+export const FacilityMinerals = () => {
+    const transientstate = getTransientState()
+    const facilities = getFacilities()
+    const minerals = getMinerals()
+    let facilityMinerals = getFacilityMinerals()
+    const displayedFacility = facilities.find((facility) => (transientstate.selectedFacility === facility.id)) 
+    let html = "<ul>"
+    if(transientstate.selectedFacility !== undefined){facilityMinerals = facilityMinerals.filter((facility) => displayedFacility.id === facility.facilityId)
+    facilityMinerals.map(
+        (facMineral) => {
+            const minName = minerals.find((mineral) => facMineral.mineralId === mineral.id)
+            html += `<li>
+                <input type="radio" name="${minName}" value="${facMineral.mineralId}" /> ${minName}:${facMineral.mineralQuanitity}
+                </li>`
+        }
+    )}
+    html += "</ul>"
+    
+
 }
 
 document.addEventListener("change", (event) => {

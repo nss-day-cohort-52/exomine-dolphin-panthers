@@ -146,6 +146,10 @@ export const getGovernors = () => {
 export const getMinerals = () => {
     return database.minerals.map(mineral => ({ ...mineral }))
 }
+export const getFacilityMinerals = () => {
+    return database.facilityMinerals.map(facilitymineral => ({ ...facilitymineral }))
+}
+
 
 export const getTransientState = () => {
     return database.transientState
