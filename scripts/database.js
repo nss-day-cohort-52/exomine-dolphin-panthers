@@ -1,3 +1,5 @@
+import { addToColony, subtractFromFacility } from "./MineralsAtFacility.js"
+
 const database = {
     governors: [
         { id: 1, name: "Patricia Bundy", colonyId: 1, active: true },
@@ -162,7 +164,37 @@ export const getTransientState = () => {
 }
 
 export const purchaseMineral = () => {
+    const foundFacilityMineral = subtractFromFacility()
+    const selectedColony = database.governors.find((governor) => 
+        database.transientState.selectedGovernor === governor.id //uses the "implicit return" of a "single line" arrow function
+    )
+    database.facilityMinerals = database.facilityMinerals.map((facility) => {
+        if (facility.id === foundFacilityMineral.id) {
+            facility = foundFacilityMineral
+            return facility
+        }
+        return facility
+    })
+    const foundColonyMineral = addToColony()
+    if (foundColonyMineral !== undefined) {
+        database.colonyMinerals = database.colonyMinerals.map((colony) => {
+            if (colony.id === foundColonyMineral.id) {
+                colony = foundColonyMineral
+                return colony
+            }
+            return colony
+        })
+    }
+    else database.colonyMinerals.push({
+        id: database.colonyMinerals[database.colonyMinerals.length - 1].id + 1,
+        mineralId: database.transientState.selectedMineral,
+        colonyId: selectedColony.colonyId,
+        mineralQuantity: 1
+    }
 
+    )
+
+    database.transientState.selectedMineral = undefined
     // Broadcast custom event to entire documement so that the
     // application can re-render and update state
     document.dispatchEvent(new CustomEvent("stateChanged"))
