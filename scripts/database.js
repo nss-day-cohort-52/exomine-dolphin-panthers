@@ -169,5 +169,5 @@ export const purchaseMineral = () => {
 }
 
 export const getColonyMinerals = () => {
-    return database.colonyMinerals.map(minerals => ({...minerals}))
+    return database.colonyMinerals.map(minerals => ({ ...minerals }))
 }
