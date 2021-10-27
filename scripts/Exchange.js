@@ -15,13 +15,10 @@ export const Exchange = () => {
                     ${Governors()}
                 </Section>
                 <Section>
-<<<<<<< HEAD
+
                     <h2>"ColonyName" Minerals </h2>
                     <div id="mineralDisplay"></div>
-=======
-                    <h2>${ColonyName()} Minerals </h2>
-                    <div> actual minerals</div>
->>>>>>> main
+
                 </Section>
         </Article>
         <Article>"Facility Choice:" ${FacilitiesSelect()} </Article>
