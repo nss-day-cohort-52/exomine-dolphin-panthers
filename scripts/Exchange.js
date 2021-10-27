@@ -15,8 +15,10 @@ export const Exchange = () => {
                     ${Governors()}
                 </Section>
                 <Section>
-                    <h2>${ColonyName()} Minerals </h2>
-                    <div> actual minerals</div>
+
+                    <h2>"ColonyName" Minerals </h2>
+                    <div id="mineralDisplay"></div>
+
                 </Section>
         </Article>
         <Article>"Facility Choice:" ${FacilitiesSelect()} </Article>

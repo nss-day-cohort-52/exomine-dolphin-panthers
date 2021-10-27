@@ -1,3 +1,4 @@
+import { colonyResources } from "./ColonyResources.js";
 import {getTransientState, setGovernor} from "./database.js"
 //Event listener for governor select
 document.addEventListener(
@@ -5,6 +6,7 @@ document.addEventListener(
     (changeEvent) => {
         if(changeEvent.target.id === "select__governor"){
             setGovernor(parseInt(changeEvent.target.value))
+            colonyResources()
         }
     }
 
