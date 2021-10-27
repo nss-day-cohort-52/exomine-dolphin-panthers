@@ -1,3 +1,5 @@
+
+import { ColonyName } from "./ColonyName.js"
 import { FacilitiesSelect, FacilityName } from "./Facilities.js"
 import { Governors } from "./Governors.js"
 
@@ -13,7 +15,7 @@ export const Exchange = () => {
                     ${Governors()}
                 </Section>
                 <Section>
-                    <h2>"ColonyName" Minerals </h2>
+                    <h2>${ColonyName()} Minerals </h2>
                     <div> actual minerals</div>
                 </Section>
         </Article>
