@@ -74,7 +74,7 @@ export const FacilityMinerals = () => {
 document.addEventListener("change", (event) => {
     if (event.target.id === "facility") {
         setFacility(parseInt(event.target.value)) //references a pre-established setter to set a transient state property.
-        debugger //for testing
+        
     }
 })
 
