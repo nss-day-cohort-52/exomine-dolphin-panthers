@@ -158,3 +158,6 @@ export const purchaseMineral = () => {
     document.dispatchEvent(new CustomEvent("stateChanged"))
 }
 
+export const getColonyMinerals = () => {
+    return database.colonyMinerals.map(minerals => ({...minerals}))
+}
