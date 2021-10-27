@@ -42,9 +42,16 @@ export const FacilityMinerals = () => {
     facilityMinerals.map( //for each mineral present at the given facility
         (facMineral) => {
             const minName = minerals.find((mineral) => facMineral.mineralId === mineral.id) //find its name based on the id
+            if (transientstate.selectedMineral === facMineral.mineralId ) {
+                html += `<li> 
+                <input type="radio" name="mineral_${displayedFacility.id}" value="${facMineral.mineralId}" checked="checked" /> ${facMineral.mineralQuanitity} tons of ${minName.mineralName}
+                </li>`
+
+            } else {
             html += `<li> 
                 <input type="radio" name="mineral_${displayedFacility.id}" value="${facMineral.mineralId}" /> ${facMineral.mineralQuanitity} tons of ${minName.mineralName}
                 </li>` //construct an html line-item. current setup limits minerals to 1 of each type per purchase. can remove "name" field to enable multi-purchase. event listen would target "type" in that case, since we only have one set of radio buttons
+            }
         }
     )}
     else html += ""
