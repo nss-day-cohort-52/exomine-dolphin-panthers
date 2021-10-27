@@ -29,7 +29,7 @@ export const CartItems = () => {
             }
         )
     
-        return `1 ton of ${foundMineral.mineralName} from ${foundFacility.name}`
+        return `You have chosen 1 ton of ${foundMineral.mineralName} from ${foundFacility.name}`
 
     } else {
         return ""
