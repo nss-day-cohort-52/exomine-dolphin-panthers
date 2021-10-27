@@ -6,7 +6,6 @@ document.addEventListener(
     (changeEvent) => {
         if (changeEvent.target.id === "select__governor") {
             setGovernor(parseInt(changeEvent.target.value))
-            colonyResources()
         }
     }
 
