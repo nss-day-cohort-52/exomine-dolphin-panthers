@@ -207,6 +207,7 @@ export const getColonyMinerals = () => {
 
 const subtractFromFacility = () => {
     const state = database.transientState
+    const facilityMinerals = database.facilityMinerals
 
     let foundFacilityMineral = facilityMinerals.find(
         (mineral) => {
@@ -218,9 +219,9 @@ const subtractFromFacility = () => {
 }
 
 const addToColony = () => {
-    let colonyMinerals = database.colonyMinerals.map()
+    let colonyMinerals = database.colonyMinerals
     const state = database.transientState
-    const governors = database.governors.map()
+    const governors = database.governors
     //find governor mentioned in state
     let foundGovernor = governors.find(
         (governor) => {
