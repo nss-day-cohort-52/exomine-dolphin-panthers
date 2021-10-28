@@ -10,7 +10,7 @@ export const FacilitiesSelect = () => {
         html +=" disabled"
     }
     html += `> <option value="0">---Select a facility---</option>`//intiates select field and adds default option
-    facilities.map( //loops through facilities and adds each option to the html
+    facilities.forEach( //loops through facilities and adds each option to the html
         (facility) => {
             html += `<option value="${facility.id}"`
             if (transientstate.selectedFacility === facility.id) html += " selected" //rather than playing with =true or false, I just added the selected attribute only if the case is true
