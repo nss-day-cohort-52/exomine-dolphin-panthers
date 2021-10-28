@@ -12,29 +12,28 @@ export const Exchange = () => {
             
             <h1 class="title">Mineral Exchange</h1>
         </header>
-        <Article class="placeholder1">
-                <Section>
-                    Choose a governor:
+        <Article class="upperfield">
+                <Section class="govBox">
+                    Choose a governor 
                     ${Governors()}
                 </Section>
-                <Section>
-
-                    <h2>${ColonyName()} Minerals </h2>
+                <Section class="colonyBox">
+                    <h2 class="colonyName">${ColonyName()} Minerals </h2>
                     <div id="mineralDisplay">
                     ${colonyResourcesHTML()}
                     </div>
 
                 </Section>
         </Article>
-        <Article>"Facility Choice:" ${FacilitiesSelect()} </Article>
-        <Article class="placeholder1">
-            <Section>
-                <Section>"Facility Minerals ${FacilityName()}"</Section>
+        <Article class="facBox">Choose a facility${FacilitiesSelect()} </Article>
+        <Article class="lowerfield">
+            <Section class="facMineBox">
+                <h3>Facility Minerals ${FacilityName()}</h3>
                 <Section>${FacilityMinerals()}</Section>
             </Section>
-            <Section>
-                <Section>Cart</Section>
-                <Section>${CartItems()}</Section>
+            <Section class="cartBox">
+                <h3>Cart</h3>
+                <Section class="cartItems">${CartItems()}</Section>
                 <Section>
                 ${PurchaseButton()}
             </Section>

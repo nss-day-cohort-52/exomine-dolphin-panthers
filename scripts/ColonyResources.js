@@ -16,7 +16,7 @@ export const colonyResourcesHTML = () => {
     const minerals = getMinerals()
 
 
-    let html = "No Minerals"
+    let html = ""
     //find the colony that the governor is identified with
     if (state.selectedGovernor) {
         let currentColony = colonies.find(
@@ -48,7 +48,7 @@ export const colonyResourcesHTML = () => {
             minerals.forEach( //go through the mineral name array
                 (mineralNamer) => {
                     if (mineralNamer.id === mineral.mineralId) { //and once you find the mineral name that matches,
-                        html += `<div>${mineral.mineralQuantity} tons of ${mineralNamer.mineralName}</div>` //use the current loop info to build an html line
+                        html += `<div class="colMineLine">${mineral.mineralQuantity} tons of ${mineralNamer.mineralName}</div>` //use the current loop info to build an html line
                     } else {
                         return null
                     }
@@ -56,7 +56,6 @@ export const colonyResourcesHTML = () => {
             )    
         }
         )
-        if(html === "") html = "No Minerals" //if nothing happened in the maps, go ahead and change it back to no minerals
     }
     return html
 
