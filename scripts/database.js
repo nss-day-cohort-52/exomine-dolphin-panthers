@@ -163,35 +163,8 @@ export const getTransientState = () => {
 }
 
 export const purchaseMineral = () => {
-    const foundFacilityMineral = subtractFromFacility()
-
-    database.facilityMinerals = database.facilityMinerals.map((facility) => {
-        if (facility.id === foundFacilityMineral.id) {
-            facility = foundFacilityMineral
-            return facility
-        }
-        return facility
-    })
-    const foundColonyMineral = addToColony()
-    if (foundColonyMineral) {
-        database.colonyMinerals = database.colonyMinerals.map((colony) => {
-            if (colony.id === foundColonyMineral.id) {
-                colony = foundColonyMineral
-                return colony
-            }
-            return colony
-        })
-    }
-    else {
-        database.colonyMinerals.push({
-        id: database.colonyMinerals[database.colonyMinerals.length - 1].id + 1,
-        mineralId: database.transientState.selectedMineral,
-        colonyId: database.transientState.selectedGovernor.colonyId,
-        mineralQuantity: 1
-        
-        })
-    }
-
+    subtractFromFacility()
+    addToColony()
     database.transientState.selectedMineral = null
 
     // Broadcast custom event to entire documement so that the
@@ -211,7 +184,6 @@ const subtractFromFacility = () => {
         }
     )
     foundFacilityMineral.mineralQuanitity = foundFacilityMineral.mineralQuanitity - 1
-    return foundFacilityMineral
 }
 
 const addToColony = () => {
@@ -223,10 +195,15 @@ const addToColony = () => {
             return mineral.mineralId === database.transientState.selectedMineral
         }
     )
-    if (foundColonyMineral === undefined) {
-        return undefined
+    if (foundColonyMineral) {
+        foundColonyMineral.mineralQuantity = foundColonyMineral.mineralQuantity + 1        
     }
-    foundColonyMineral.mineralQuantity = foundColonyMineral.mineralQuantity + 1
-    return foundColonyMineral
+    else{
+        database.colonyMinerals.push({
+            id: database.colonyMinerals[database.colonyMinerals.length - 1].id + 1,
+            mineralId: database.transientState.selectedMineral,
+            colonyId: database.transientState.selectedGovernor.colonyId,
+            mineralQuantity: 1})
+    }
 
 }
