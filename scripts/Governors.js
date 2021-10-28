@@ -5,7 +5,9 @@ document.addEventListener(
     "change",
     (changeEvent) => {
         if (changeEvent.target.id === "select__governor") {
-            setGovernor(parseInt(changeEvent.target.value))
+            setGovernor(
+                governors.find((governor) => governor.id === parseInt(changeEvent.target.value)) //returns a governor object whose id matches the value of the target (which is governor.id)
+            )
         }
     }
 
@@ -25,7 +27,7 @@ export const Governors = () => {
     for (const governor of governors) {  //loops through governors and constructs a series of option for the select field
         if (governor.active === true) {
             html += `<option value="${governor.id}"`
-            if (transientstate.selectedGovernor === governor.id) html += " selected" //rather than playing with =true or false, I just added the selected attribute only if the case is true
+            if ((transientstate.selectedGovernor)&&(transientstate.selectedGovernor.id === governor.id)) html += " selected" //rather than playing with =true or false, I just added the selected attribute only if the case is true. short circuited
             html += `>${governor.name}</option>`
         }
     }

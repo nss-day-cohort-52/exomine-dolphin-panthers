@@ -1,4 +1,4 @@
-import { getTransientState, getColonies, getGovernors } from "./database.js";
+import { getTransientState, getColonies } from "./database.js";
 
 
 
@@ -8,20 +8,11 @@ export const ColonyName = () => {
     if (transientState.selectedGovernor) {
 
         const colonies = getColonies()
-        const governors = getGovernors()
-
-
-        //look at transient state and find the governor associated with selectedGovernor
-        const foundGovernor = governors.find(
-            (governor) => {
-                return governor.id === transientState.selectedGovernor
-            }
-        )
 
         //with the governor object identified, find the colony object associated with the governor.colonyId
         const foundColony = colonies.find(
             (colony) => {
-                return colony.id === foundGovernor.colonyId
+                return colony.id === transientState.selectedGovernor.colonyId
             }
         )
 
