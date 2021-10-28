@@ -1,7 +1,7 @@
 import { FacilitiesSelect, FacilityMinerals, FacilityName } from "./Facilities.js"
 import { ColonyName } from "./ColonyName.js"
 import { Governors } from "./Governors.js"
-import { buttonHTML } from "./Orders.js"
+import { PurchaseButton } from "./Orders.js"
 import { CartItems } from "./CartItems.js"
 
 
@@ -33,7 +33,7 @@ export const Exchange = () => {
                 <Section>Cart</Section>
                 <Section>${CartItems()}</Section>
                 <Section>
-                ${buttonHTML()}
+                ${PurchaseButton()}
             </Section>
         </Article>
     `

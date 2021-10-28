@@ -14,7 +14,7 @@ document.addEventListener(
     }
 )
 
-export const buttonHTML = () => {
+export const PurchaseButton = () => {
     return `<button id= "orderMineral">Purchase Minerals</button></Section>`
 }
     // and a single quantity of the indicated mineral will be added to the colony mineral array
