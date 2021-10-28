@@ -164,9 +164,7 @@ export const getTransientState = () => {
 
 export const purchaseMineral = () => {
     const foundFacilityMineral = subtractFromFacility()
-    const selectedColony = database.governors.find((governor) => 
-        database.transientState.selectedGovernor === governor.id //uses the "implicit return" of a "single line" arrow function
-    )
+
     database.facilityMinerals = database.facilityMinerals.map((facility) => {
         if (facility.id === foundFacilityMineral.id) {
             facility = foundFacilityMineral
@@ -188,7 +186,7 @@ export const purchaseMineral = () => {
         database.colonyMinerals.push({
         id: database.colonyMinerals[database.colonyMinerals.length - 1].id + 1,
         mineralId: database.transientState.selectedMineral,
-        colonyId: selectedColony.colonyId,
+        colonyId: database.transientState.selectedGovernor.colonyId,
         mineralQuantity: 1
         
         })
@@ -206,12 +204,12 @@ export const getColonyMinerals = () => {
 }
 
 const subtractFromFacility = () => {
-    const state = database.transientState
+    
     const facilityMinerals = database.facilityMinerals
 
     let foundFacilityMineral = facilityMinerals.find(
         (mineral) => {
-            return mineral.id === state.selectedMineral
+            return mineral.id === database.transientState.selectedMineral
         }
     )
     foundFacilityMineral.mineralQuanitity = foundFacilityMineral.mineralQuanitity - 1
@@ -220,21 +218,13 @@ const subtractFromFacility = () => {
 
 const addToColony = () => {
     let colonyMinerals = database.colonyMinerals
-    const state = database.transientState
-    const governors = database.governors
-    //find governor mentioned in state
-    let foundGovernor = governors.find(
-        (governor) => {
-            return governor.id === state.selectedGovernor
-        }
-    )
 
-    colonyMinerals = colonyMinerals.filter((colony) => (foundGovernor.colonyId === colony.colonyId)) //filters down total list of colony minerals to just minerals at the colony of the selected governor
+    colonyMinerals = colonyMinerals.filter((colony) => (database.transientState.selectedGovernor.colonyId === colony.colonyId)) //filters down total list of colony minerals to just minerals at the colony of the selected governor
 
     //finds the colonymineral entry for the select mineral AT this particular colony
     let foundColonyMineral = colonyMinerals.find(
         (mineral) => {
-            return mineral.mineralId === state.selectedMineral
+            return mineral.mineralId === database.transientState.selectedMineral
         }
     )
     if (foundColonyMineral === undefined) {
