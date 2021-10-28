@@ -176,7 +176,7 @@ export const purchaseMineral = () => {
         return facility
     })
     const foundColonyMineral = addToColony()
-    if (foundColonyMineral !== undefined) {
+    if (foundColonyMineral) {
         database.colonyMinerals = database.colonyMinerals.map((colony) => {
             if (colony.id === foundColonyMineral.id) {
                 colony = foundColonyMineral
