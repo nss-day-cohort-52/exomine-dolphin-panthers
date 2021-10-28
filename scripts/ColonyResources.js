@@ -1,4 +1,4 @@
-import { getColonyMinerals, getColonies, getMinerals, getTransientState, getGovernors } from "./database.js"
+import { getColonyMinerals, getColonies, getMinerals, getTransientState } from "./database.js"
 
 
 
@@ -8,9 +8,8 @@ import { getColonyMinerals, getColonies, getMinerals, getTransientState, getGove
 
 
 //Responsibility to generate colony resource HTML
-//use TRANSIENTSTATE to display colony resources HTML
+//use TRANSIENTSTATE to display colony resources in the appropriate sections of the HTML
 export const colonyResourcesHTML = () => {
-    const governors = getGovernors()
     const colonyMinerals = getColonyMinerals()
     const state = getTransientState()
     const colonies = getColonies()
@@ -18,23 +17,11 @@ export const colonyResourcesHTML = () => {
 
 
     let html = "No Minerals"
-
-    //find the governor that is currently selected
-    let currentGov = governors.find(
-        (governor) => {
-            if (governor.id === state.selectedGovernor) {
-
-                return governor
-            } else {
-                return null
-            }
-        }
-    )
     //find the colony that the governor is identified with
-    if (currentGov) {
+    if (state.selectedGovernor) {
         let currentColony = colonies.find(
             (colony) => {
-                if (colony.id === currentGov.colonyId) {
+                if (colony.id === state.selectedGovernor.colonyId) {
                     return colony
                 } else {
                     return null

@@ -165,9 +165,7 @@ export const getTransientState = () => {
 
 export const purchaseMineral = () => {
     const foundFacilityMineral = subtractFromFacility()
-    const selectedColony = database.governors.find((governor) => 
-        database.transientState.selectedGovernor === governor.id //uses the "implicit return" of a "single line" arrow function
-    )
+
     database.facilityMinerals = database.facilityMinerals.map((facility) => {
         if (facility.id === foundFacilityMineral.id) {
             facility = foundFacilityMineral
@@ -189,7 +187,7 @@ export const purchaseMineral = () => {
         database.colonyMinerals.push({
         id: database.colonyMinerals[database.colonyMinerals.length - 1].id + 1,
         mineralId: database.transientState.selectedMineral,
-        colonyId: selectedColony.colonyId,
+        colonyId: database.transientState.selectedGovernor.colonyId,
         mineralQuantity: 1
         
         })
