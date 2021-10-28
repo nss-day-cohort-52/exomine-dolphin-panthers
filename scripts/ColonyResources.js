@@ -9,7 +9,7 @@ import { getColonyMinerals, getColonies, getMinerals, getTransientState } from "
 
 //Responsibility to generate colony resource HTML
 //use TRANSIENTSTATE to display colony resources in the appropriate sections of the HTML
-export const colonyResources = () => {
+export const colonyResourcesHTML = () => {
     const colonyMinerals = getColonyMinerals()
     const state = getTransientState()
     const colonies = getColonies()
@@ -17,12 +17,6 @@ export const colonyResources = () => {
 
 
     let html = "No Minerals"
-    //target the specific html that will display the mineral name
-    const mineralTarget = document.querySelector("#mineralDisplay")
-    const renderMineralHTML = () => {
-        mineralTarget.innerHTML = html
-
-    }
     //find the colony that the governor is identified with
     if (state.selectedGovernor) {
         let currentColony = colonies.find(
@@ -64,6 +58,6 @@ export const colonyResources = () => {
         )
         if(html === "") html = "No Minerals" //if nothing happened in the maps, go ahead and change it back to no minerals
     }
-    return renderMineralHTML()
+    return html
 
 }
