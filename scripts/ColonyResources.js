@@ -75,8 +75,6 @@ export const colonyResources = () => {
         }
         )
         if(html === "") html = "No Minerals" //if nothing happened in the maps, go ahead and change it back to no minerals
-        //    html = `${colonyMineral.mineralQuantity} tons of ${mineralDisplay.mineralName}`
-
     }
     return renderMineralHTML()
 
