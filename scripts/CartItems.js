@@ -1,5 +1,5 @@
-import { getFacilities, getGovernors, getMinerals, getTransientState } from "./database.js"
 
+import { getFacilities, getMinerals, getTransientState } from "./database.js"
 
 
 export const CartItems = () => {

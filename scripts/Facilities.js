@@ -1,4 +1,5 @@
 import { getFacilities, getFacilityMinerals, getMinerals, getTransientState, setFacility } from "./database.js"
+import { setFacilityMineral } from "./database.js"
 
 
 export const FacilitiesSelect = () => {
@@ -78,15 +79,11 @@ document.addEventListener("change", (event) => {
     }
 })
 
-
-import { setMineral } from "./database.js"
-
-
 document.addEventListener(
     "change",
     (changeEvent) => {
         if (changeEvent.target.name.startsWith("mineral")) {
-            setMineral(parseInt(changeEvent.target.value))
+            setFacilityMineral(parseInt(changeEvent.target.value))
         }
     }
 )

@@ -49,7 +49,7 @@ export const colonyResources = () => {
 
 
         //use the colony to find the mineral name to display
-        let colonyMineral = colonyMinerals.filter(
+        let foundColonyMinerals = colonyMinerals.filter(
             (mineral) => {
                 if (mineral.colonyId === currentColony.id) {
                     return mineral
@@ -62,7 +62,7 @@ export const colonyResources = () => {
         //info previously on this line removed as a redundancy for the new if statement added above
 
         html = "" //reset the html state for the += coming up
-        colonyMineral.map((mineral) => { //for every mineral the colony has
+        foundColonyMinerals.map((mineral) => { //for every mineral the colony has
             minerals.map( //go through the mineral name array
                 (mineralNamer) => {
                     if (mineralNamer.id === mineral.mineralId) { //and once you find the mineral name that matches,
@@ -75,8 +75,6 @@ export const colonyResources = () => {
         }
         )
         if(html === "") html = "No Minerals" //if nothing happened in the maps, go ahead and change it back to no minerals
-        //    html = `${colonyMineral.mineralQuantity} tons of ${mineralDisplay.mineralName}`
-
     }
     return renderMineralHTML()
 
