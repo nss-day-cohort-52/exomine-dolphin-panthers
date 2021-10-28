@@ -10,7 +10,7 @@ export const FacilityMinerals = () => {
     let html = "<ul>"
 
     if(transientstate.selectedFacility !== undefined){facilityMinerals = facilityMinerals.filter((facility) => (displayedFacility.id === facility.facilityId)) //if prevents errors from reading undefined id. then filters the facilitiesMinerals to only return minerals of the selected facility
-    facilityMinerals.map( //for each mineral present at the given facility
+    facilityMinerals.forEach( //for each mineral present at the given facility
         (facMineral) => {
             const minName = minerals.find((mineral) => facMineral.mineralId === mineral.id) //find its name based on the id
             
