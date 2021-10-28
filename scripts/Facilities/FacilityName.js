@@ -4,13 +4,16 @@ export const FacilityName = () => {
     const transientstate = getTransientState()
     const facilities = getFacilities()
     let html = ""
-    facilities.map(
-        (facility) => {
-            if (transientstate.selectedFacility === facility.id) {
-                html += "for " + facility.name
-            }
 
+    const facility = facilities.find(
+        (facility) => {
+            return transientstate.selectedFacility === facility.id
         }
     )
+
+    if (facility) {
+        html += `for ${facility.name}`
+    }
+
     return html
 }

@@ -57,8 +57,8 @@ export const colonyResourcesHTML = () => {
         //info previously on this line removed as a redundancy for the new if statement added above
 
         html = "" //reset the html state for the += coming up
-        foundColonyMinerals.map((mineral) => { //for every mineral the colony has
-            minerals.map( //go through the mineral name array
+        foundColonyMinerals.forEach((mineral) => { //for every mineral the colony has
+            minerals.forEach( //go through the mineral name array
                 (mineralNamer) => {
                     if (mineralNamer.id === mineral.mineralId) { //and once you find the mineral name that matches,
                         html += `<div>${mineral.mineralQuantity} tons of ${mineralNamer.mineralName}</div>` //use the current loop info to build an html line
