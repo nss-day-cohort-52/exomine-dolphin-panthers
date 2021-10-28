@@ -1,4 +1,4 @@
-import { FacilitiesSelect, FacilityMinerals, FacilityName } from "./Facilities.js"
+import { FacilitiesSelect, FacilityMinerals, FacilityName } from "./Facilities/index.js"
 import { ColonyName } from "./ColonyName.js"
 import { Governors } from "./Governors.js"
 import { PurchaseButton } from "./Orders.js"
