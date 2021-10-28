@@ -1,4 +1,5 @@
 import { getFacilities, getFacilityMinerals, getMinerals, getTransientState, setFacility } from "./database.js"
+import { setFacilityMineral } from "./database.js"
 
 
 export const FacilitiesSelect = () => {
@@ -77,10 +78,6 @@ document.addEventListener("change", (event) => {
         
     }
 })
-
-
-import { setFacilityMineral } from "./database.js"
-
 
 document.addEventListener(
     "change",
