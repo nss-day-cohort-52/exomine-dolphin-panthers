@@ -1,14 +1,5 @@
-import { getFacilities, getGovernors, getMinerals, getTransientState, setMineral } from "./database.js"
+import { getFacilities, getGovernors, getMinerals, getTransientState } from "./database.js"
 
-
-document.addEventListener(
-    "change",
-    (changeEvent) => {
-        if (changeEvent.target.name.startsWith("mineral")) {
-            setMineral(parseInt(changeEvent.target.value))
-        }
-    }
-)
 
 
 export const CartItems = () => {
