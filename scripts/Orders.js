@@ -10,7 +10,6 @@ document.addEventListener(
     (event) => {
         if (event.target.id === "orderMineral") {
             purchaseMineral()
-            document.dispatchEvent(new CustomEvent("stateChanged"))
         }
     }
 )
