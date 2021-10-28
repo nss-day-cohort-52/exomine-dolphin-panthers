@@ -1,4 +1,3 @@
-import { addToColony, subtractFromFacility } from "./MineralsAtFacility.js"
 
 const database = {
     governors: [
@@ -204,4 +203,43 @@ export const purchaseMineral = () => {
 
 export const getColonyMinerals = () => {
     return database.colonyMinerals.map(minerals => ({ ...minerals }))
+}
+
+const subtractFromFacility = () => {
+    const state = database.transientState
+
+    let foundFacilityMineral = facilityMinerals.find(
+        (mineral) => {
+            return mineral.id === state.selectedMineral
+        }
+    )
+    foundFacilityMineral.mineralQuanitity = foundFacilityMineral.mineralQuanitity - 1
+    return foundFacilityMineral
+}
+
+const addToColony = () => {
+    let colonyMinerals = database.colonyMinerals.map()
+    const state = database.transientState
+    const governors = database.governors.map()
+    //find governor mentioned in state
+    let foundGovernor = governors.find(
+        (governor) => {
+            return governor.id === state.selectedGovernor
+        }
+    )
+
+    colonyMinerals = colonyMinerals.filter((colony) => (foundGovernor.colonyId === colony.colonyId)) //filters down total list of colony minerals to just minerals at the colony of the selected governor
+
+    //finds the colonymineral entry for the select mineral AT this particular colony
+    let foundColonyMineral = colonyMinerals.find(
+        (mineral) => {
+            return mineral.mineralId === state.selectedMineral
+        }
+    )
+    if (foundColonyMineral === undefined) {
+        return undefined
+    }
+    foundColonyMineral.mineralQuantity = foundColonyMineral.mineralQuantity + 1
+    return foundColonyMineral
+
 }
