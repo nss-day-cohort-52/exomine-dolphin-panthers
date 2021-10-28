@@ -205,9 +205,7 @@ export const getColonyMinerals = () => {
 
 const subtractFromFacility = () => {
     
-    const facilityMinerals = database.facilityMinerals
-
-    let foundFacilityMineral = facilityMinerals.find(
+    const foundFacilityMineral = database.facilityMinerals.find(
         (mineral) => {
             return mineral.id === database.transientState.selectedMineral
         }
@@ -217,12 +215,10 @@ const subtractFromFacility = () => {
 }
 
 const addToColony = () => {
-    let colonyMinerals = database.colonyMinerals
-
-    colonyMinerals = colonyMinerals.filter((colony) => (database.transientState.selectedGovernor.colonyId === colony.colonyId)) //filters down total list of colony minerals to just minerals at the colony of the selected governor
+    let colonyMinerals = database.colonyMinerals.filter((colony) => (database.transientState.selectedGovernor.colonyId === colony.colonyId)) //filters down total list of colony minerals to just minerals at the colony of the selected governor
 
     //finds the colonymineral entry for the select mineral AT this particular colony
-    let foundColonyMineral = colonyMinerals.find(
+    const foundColonyMineral = colonyMinerals.find(
         (mineral) => {
             return mineral.mineralId === database.transientState.selectedMineral
         }
