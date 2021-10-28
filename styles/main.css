@@ -1,9 +1,94 @@
-* {
-    border-style: double;
+@import url("https://fonts.googleapis.com/css?family=Comfortaa|Patua+One");
+*{
+    font-family: "Comfortaa";
 }
 
-.placeholder1 {
+h1,h2,h3{
+    font-family: "Patua One";
+}
+
+h3{
+    margin: 0
+}
+
+.upperfield {
     display: flex;
     flex-flow: row nowrap;
     justify-content: space-between;
+}
+
+.lowerfield {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+    min-height: 5em;
+}
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-flow: column nowrap;
+    margin-top: .5em;
+    margin-bottom: .5em;
+}
+
+.govBox {
+    display: flex;
+    align-items: flex-start;
+    flex: 1
+}
+.colonyBox{
+    flex: 1
+}
+
+.colonyName{
+    text-align: center;
+}
+
+#mineralDisplay{
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+}
+
+.colMineLine{
+    text-align: center;
+}
+
+.facBox{
+    height: 2em;
+    display: flex;
+    align-items: center;
+}
+
+.facMineBox{
+    margin: .1em;
+    padding: .5em;
+    flex: 3;
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    border: 2px dashed purple
+}
+
+.cartBox{
+    padding: .5em;
+    margin: .1em;
+    flex: 1;
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    border: 2px dashed teal
+}
+
+.cartItems{
+    text-align: center;
+    margin-top: .5em;
+    margin-bottom: .5em;
+}
+
+select{
+    margin-left: 1em;
 }
