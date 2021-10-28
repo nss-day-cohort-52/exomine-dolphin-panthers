@@ -195,7 +195,8 @@ export const purchaseMineral = () => {
         })
     }
 
-    database.transientState.selectedMineral = undefined
+    database.transientState.selectedMineral = null
+
     // Broadcast custom event to entire documement so that the
     // application can re-render and update state
     document.dispatchEvent(new CustomEvent("stateChanged"))
