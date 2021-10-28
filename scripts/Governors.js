@@ -1,5 +1,5 @@
-import { colonyResources } from "./ColonyResources.js";
 import { getTransientState, setGovernor } from "./database.js"
+import { getGovernors } from "./database.js";
 //Event listener for governor select
 document.addEventListener(
     "change",
@@ -11,7 +11,6 @@ document.addEventListener(
 
 )
 
-import { getGovernors } from "./database.js";
 
 
 const governors = getGovernors()
