@@ -2,7 +2,7 @@
 import { getFacilities, getMinerals, getTransientState } from "./database.js"
 
 
-export const CartItems = () => {
+export const CurrentItem = () => {
     const transientState = getTransientState()
     const minerals = getMinerals()
     const facilities = getFacilities()

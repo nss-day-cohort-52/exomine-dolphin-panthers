@@ -21,7 +21,8 @@ h3{
     display: flex;
     flex-flow: row nowrap;
     justify-content: space-between;
-    min-height: 5em;
+    min-height: 10em;
+    margin-top: 1em;
 }
 
 ul {
@@ -91,4 +92,32 @@ ul {
 
 select{
     margin-left: 1em;
+}
+
+.cartContent {
+    border-bottom: solid black 1px;
+    margin: 0.25em;
+    text-align: center;
+
+}
+
+.contentList {
+    min-height: 2em;
+    margin: 0.5em; 
+    list-style-type: circle;
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+}
+
+.cartItem {
+    text-align: center;
+}
+
+button {
+    margin: 0.25em;
+    padding: 0.5rem;
+    background-color: rgb(206, 196, 111);
+    color: rgb(75, 75, 41);
+    font-size: 1rem;
 }
