@@ -4,13 +4,13 @@
 // a single quantity of the indicated mineral will be subtracted from the chosen facility 
 
 import { purchaseAllMinerals } from "./database.js"
-// import { purchaseMineral } from "./database.js"
+
 
 document.addEventListener(
     "click",
     (event) => {
         if (event.target.id === "orderMineral") {
-            // purchaseMineral()
+
             purchaseAllMinerals()
         }
     }
