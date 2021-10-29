@@ -207,3 +207,11 @@ const addToColony = () => {
     }
 
 }
+
+export const resetSelectedMineral = () => {
+    if (database.transientState.selectedMineral) {
+        database.transientState.selectedMineral = null
+    }
+    // document.dispatchEvent(new CustomEvent("stateChanged"))
+
+}
