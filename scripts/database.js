@@ -121,6 +121,12 @@ const database = {
             facilityId: 3,
             mineralId: 10,
             mineralQuanitity: 7
+        },
+        {
+            id: 1,
+            facilityId: 4,
+            mineralId: 3,
+            mineralQuanitity: 12
         }
     ],
     transientState: {
@@ -239,10 +245,10 @@ export const addToCart = () => {
 export const purchaseAllMinerals = () => {
 
     database.transientState.cart.forEach(
-        (cartItem, index) => { //cartItem value is unnecessary but we need to include it as a first paramater in order to grab the index value
+        (cartItem) => { //cartItem value is unnecessary but we need to include it as a first paramater in order to grab the index value
 
-            subtractAllFromFacilities(index) //for each item, the index value of the current element in the array is used as a parameter in the subtract and add functions
-            addAllToColonies(index)
+            subtractAllFromFacilities(cartItem) //for each item, the index value of the current element in the array is used as a parameter in the subtract and add functions
+            addAllToColonies(cartItem)
         }
         )
         
@@ -252,11 +258,11 @@ export const purchaseAllMinerals = () => {
 }
 
 //New AddAll and SubtractAll Functions
-const subtractAllFromFacilities = (index) => {
+const subtractAllFromFacilities = (cartItem) => {
     const foundFacilityMineralObj = database.facilityMinerals.find(
         (object) => {
             //matches facilityMineral.id value to the id value of the facilityMineral object currently being looked at within the cart array
-            return object.id === database.transientState.cart[index].id 
+            return object.id === cartItem.id 
             
         }
     )
@@ -264,13 +270,13 @@ const subtractAllFromFacilities = (index) => {
     foundFacilityMineralObj.mineralQuanitity --
 }
 
-const addAllToColonies = (index) => {
+const addAllToColonies = (cartItem) => {
     //filters down total list of colony minerals to just minerals at the colony of the selectedGovernor value of current transient state
     let colonyMinerals = database.colonyMinerals.filter((colony) => (database.transientState.selectedGovernor.colonyId === colony.colonyId)) 
     const foundFacilityMineralObj = database.facilityMinerals.find(
         (mineral) => {
 
-            return mineral.id === database.transientState.cart[index].id
+            return mineral.id === cartItem.id
 
         }
     )
