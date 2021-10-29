@@ -123,7 +123,9 @@ const database = {
             mineralQuanitity: 7
         }
     ],
-    transientState: {}
+    transientState: {
+        cart: []
+    }
 }
 
 
@@ -162,56 +164,133 @@ export const getTransientState = () => {
     return database.transientState
 }
 
-export const purchaseMineral = () => {
-    subtractFromFacility()
-    addToColony()
-    database.transientState.selectedMineral = null
+// export const purchaseMineral = () => {
+//     subtractFromFacility()
+//     addToColony()    
+//     database.transientState.selectedMineral = null
 
-    // Broadcast custom event to entire documement so that the
-    // application can re-render and update state
-    document.dispatchEvent(new CustomEvent("stateChanged"))
-}
+//     // Broadcast custom event to entire documement so that the
+//     // application can re-render and update state
+//     document.dispatchEvent(new CustomEvent("stateChanged"))
+// }
 
 export const getColonyMinerals = () => {
     return database.colonyMinerals.map(minerals => ({ ...minerals }))
 }
 
-const subtractFromFacility = () => {
+// const subtractFromFacility = () => {
     
-    const foundFacilityMineral = database.facilityMinerals.find(
-        (mineral) => {
-            return mineral.id === database.transientState.selectedMineral
-        }
-    )
-    foundFacilityMineral.mineralQuanitity = foundFacilityMineral.mineralQuanitity - 1
-}
+//     const foundFacilityMineral = database.facilityMinerals.find(
+//         (mineral) => {
+//             return mineral.id === database.transientState.selectedMineral
+//         }
+//     )
+//     foundFacilityMineral.mineralQuanitity = foundFacilityMineral.mineralQuanitity - 1
+// }
 
-const addToColony = () => {
-    let colonyMinerals = database.colonyMinerals.filter((colony) => (database.transientState.selectedGovernor.colonyId === colony.colonyId)) //filters down total list of colony minerals to just minerals at the colony of the selected governor
+// const addToColony = () => {
+//     let colonyMinerals = database.colonyMinerals.filter((colony) => (database.transientState.selectedGovernor.colonyId === colony.colonyId)) //filters down total list of colony minerals to just minerals at the colony of the selected governor
 
-    //finds the colonymineral entry for the select mineral AT this particular colony
-    const foundColonyMineral = colonyMinerals.find(
-        (mineral) => {
-            return mineral.mineralId === database.transientState.selectedMineral
-        }
-    )
-    if (foundColonyMineral) {
-        foundColonyMineral.mineralQuantity = foundColonyMineral.mineralQuantity + 1        
-    }
-    else{
-        database.colonyMinerals.push({
-            id: database.colonyMinerals[database.colonyMinerals.length - 1].id + 1,
-            mineralId: database.transientState.selectedMineral,
-            colonyId: database.transientState.selectedGovernor.colonyId,
-            mineralQuantity: 1})
-    }
+//     //finds the colonymineral entry for the select mineral AT this particular colony
+//     const foundColonyMineral = colonyMinerals.find(
+//         (mineral) => {
+//             return mineral.mineralId === database.transientState.selectedMineral
+//         }
+//     )
+//     if (foundColonyMineral) {
+//         foundColonyMineral.mineralQuantity = foundColonyMineral.mineralQuantity + 1        
+//     }
+//     else{
+//         database.colonyMinerals.push({
+//             id: database.colonyMinerals[database.colonyMinerals.length - 1].id + 1,
+//             mineralId: database.transientState.selectedMineral,
+//             colonyId: database.transientState.selectedGovernor.colonyId,
+//             mineralQuantity: 1})
+//     }
 
-}
+// }
 
 export const resetSelectedMineral = () => {
     if (database.transientState.selectedMineral) {
         database.transientState.selectedMineral = null
     }
-    // document.dispatchEvent(new CustomEvent("stateChanged"))
+
+}
+
+export const addToCart = () => {
+    //find method locates the facilityMinerals object in the databse that the button id value matches with.
+    const selectedFacilityMineral = database.facilityMinerals.find(
+        (mineral) => {
+            return mineral.id === database.transientState.selectedMineral
+        }
+    )
+    //checks if there is currently a cart array already defined in the transient state object, if so, the object is simply pushed to the array
+    if (database.transientState.cart) {
+        database.transientState.cart.push(selectedFacilityMineral)
+    } else { //if the cart array does not already exist, an empty array is first defined and then the object is pushed into that array
+        database.transientState.cart = []
+        database.transientState.cart.push(selectedFacilityMineral)
+    }
+    resetSelectedMineral()
+    document.dispatchEvent(new CustomEvent("stateChanged"))
+}
+
+
+export const purchaseAllMinerals = () => {
+
+    database.transientState.cart.forEach(
+        (cartItem, index) => { //cartItem value is unnecessary but we need to include it as a first paramater in order to grab the index value
+
+            subtractAllFromFacilities(index) //for each item, the index value of the current element in the array is used as a parameter in the subtract and add functions
+            addAllToColonies(index)
+        }
+        )
+        
+    database.transientState.cart = []
+    document.dispatchEvent(new CustomEvent("stateChanged"))
+
+}
+
+//New AddAll and SubtractAll Functions
+const subtractAllFromFacilities = (index) => {
+    const foundFacilityMineralObj = database.facilityMinerals.find(
+        (object) => {
+            //matches facilityMineral.id value to the id value of the facilityMineral object currently being looked at within the cart array
+            return object.id === database.transientState.cart[index].id 
+            
+        }
+    )
+    
+    foundFacilityMineralObj.mineralQuanitity --
+}
+
+const addAllToColonies = (index) => {
+    //filters down total list of colony minerals to just minerals at the colony of the selectedGovernor value of current transient state
+    let colonyMinerals = database.colonyMinerals.filter((colony) => (database.transientState.selectedGovernor.colonyId === colony.colonyId)) 
+    const foundFacilityMineralObj = database.facilityMinerals.find(
+        (mineral) => {
+
+            return mineral.id === database.transientState.cart[index].id
+
+        }
+    )
+
+    //finds the colonymineral entry for the select mineral AT this particular colony
+    const foundColonyMineralObj = colonyMinerals.find(
+        (mineral) => {
+            // return mineral.mineralId === database.transientState.selectedMineral
+            return mineral.mineralId === foundFacilityMineralObj.mineralId
+        }
+    )
+    if (foundColonyMineralObj) {
+        foundColonyMineralObj.mineralQuantity = foundColonyMineralObj.mineralQuantity + 1        
+    }
+    else{
+        database.colonyMinerals.push({
+            id: database.colonyMinerals[database.colonyMinerals.length - 1].id + 1,
+            mineralId: foundFacilityMineralObj.mineralId,
+            colonyId: database.transientState.selectedGovernor.colonyId,
+            mineralQuantity: 1})
+    }
 
 }

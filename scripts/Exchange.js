@@ -2,8 +2,10 @@ import { FacilitiesSelect, FacilityMinerals, FacilityName } from "./Facilities/i
 import { ColonyName } from "./ColonyName.js"
 import { Governors } from "./Governors.js"
 import { PurchaseButton } from "./Orders.js"
-import { CartItems } from "./CartItems.js"
+import { CurrentItem } from "./CurrentItem.js"
 import { colonyResourcesHTML } from "./ColonyResources.js"
+import { addToCartButton } from "./AddToCart.js"
+import { CartContent } from "./CartContent.js"
 
 
 export const Exchange = () => {
@@ -33,8 +35,10 @@ export const Exchange = () => {
             </Section>
             <Section class="cartBox">
                 <h3>Cart</h3>
-                <Section class="cartItems">${CartItems()}</Section>
-                <Section>
+                <Section class="cartItems">${CurrentItem()}</Section>
+                ${addToCartButton()}
+                <h3 class="cartContent">Cart Content</h3>
+                <section class="contentList">${CartContent()}</section>
                 ${PurchaseButton()}
             </Section>
         </Article>
