@@ -1,4 +1,4 @@
-import { getFacilities, getTransientState, setFacility } from "../database.js"
+import { getFacilities, getTransientState, resetSelectedMineral, setFacility } from "../database.js"
 
 
 
@@ -23,8 +23,8 @@ export const FacilitiesSelect = () => {
 
 document.addEventListener("change", (event) => {
     if (event.target.id === "facility") {
+        resetSelectedMineral()
         setFacility(parseInt(event.target.value)) //references a pre-established setter to set a transient state property.
-        
     }
 })
 
