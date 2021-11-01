@@ -1,10 +1,10 @@
 # Exomine
 
-This project has you building an application that lets governors of different colonies in our Solar System purchase minerals from various mining facilities that human have established.
+This application is a NSS group project, worked on by Sean Derevjanik, Melissa Fox, and Ross Stovenour.
 
 ## Learning Objectives
 
-Completing the project is not your objective. Your focus is to building the following skills and deepen your knowledge of the concepts.
+Completing the project was not the objective. The focus was building the following skills and deepening knowledge of the concepts.
 
 1. Collaboration (are you helping your team succeed)
 1. Productivity (are you wasting too much time before asking for help)
@@ -18,45 +18,22 @@ Quote from previous student...
 
 ## Wireframe
 
-This is the general layout provided by your product owner. Please follow this guideline for your project's layout.
+This is the layout for the application that was designed by the group at the start of the project.
 
 ![wireframe for project](./images/wireframe.png)
 
 
+## ERD
+
+This is the ERD that was constructed during the planning stages to establish our database structure and the relationships needed for application functionality.
+![erd_for_project](.images/erd.img)
+
 ## Workflow Animation
 
-This animation shows you the basic behavior of the application.
+This animation shows the basic behavior of the application.
 
 ![](./images/exomine.gif)
 
-## Data Relationships
+## Application Function
 
-Below you can ready some basic information about the properties and relationships of the data you need for this application. There are several issue tickets created that tell you how the project should function. This project has been extensively planned by your project owner, and so you must build it to those specifications. Do not deviate from the definition of the features in the issue tickets.
-
-If you need clarification about the functionality, please contact your product owner. You do not have the authority to change the intended functionality defined in the tickets.
-
-## Governors
-
-Each human habitation colony in the Solar System _(Earth, Mars, Europa, etc...)_ has a governor. To keep each colony running efficiently, the governor has to purchase essential minerals from lightly staffed mining facilities that have been established on asteroids, moons, and rocky planets.
-
-From time to time, governors take leaves of absence, so their status can change from active to inactive. Only active governors should be displayed in the UI.
-
-## Colonies
-
-Each colony can have one, or more, active governor depending on the size of the colony. For example, Earth could support up to five governors that are responsible for different regions of the planet.
-
-## Mining Facilities
-
-Each mining facility can be active or inactive depending on the changes of staffing from the various companies that operate the facilities. Each object representation should record the name of the facility and its active status.
-
-If a mining facility is inactive, then the button in the UI should never be enabled, even after a governor is chosen.
-
-## Minerals
-
-Each mining facility can produce several kinds of minerals. Each mineral type can be produced at several mining facilities.
-
-# Stretch Goal
-
-**Do not attempt the stretch goal until you have completed the basic requirements above.**
-
-If your team would like to do more advanced state manipulations, refactor your code to allow a governor to select minerals from multiple mining facilities before finalizing the purchase. A working example done by a previous team can be seen at [https://solar-mine.onrender.com/](https://solar-mine.onrender.com/). 
+The application that was developed immitates an e-commerce application, which uses modularized JavaScript, with eventListeners and state changes to allow the user to Select an active Governor, then Select one or more Facilities to purchase minerals from. As soon as a Governor is selected, the available resources from their Colony(Planet) are displayed. The user may then select a facility, which will generate a list of minerals available for purchase from that location. The user may then select a mineral option and add it to their cart using the "Add to Cart" button. The user may add multiple mineral selections from multiple facilities before completing their purchase. Once satisfied with their mineral selections, the user may then purchase all items in their cart using the "Purchase All Minerals" button. Once clicked, the purchased mineral quanitities from the origin facility and the governor's associated colony will be updated in the browser.
