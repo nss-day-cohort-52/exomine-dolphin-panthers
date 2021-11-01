@@ -20,13 +20,13 @@ Quote from previous student...
 
 This is the layout for the application that was designed by the group at the start of the project.
 
-![wireframe for project](./images/wireframe.png)
+![wireframe for project](./images/Exomine_WireFrame.PNG)
 
 
 ## ERD
 
 This is the ERD that was constructed during the planning stages to establish our database structure and the relationships needed for application functionality.
-![erd_for_project](.images/erd.img)
+![erd_for_project](.images/Exomine_ERD.PNG)
 
 ## Workflow Animation
 
